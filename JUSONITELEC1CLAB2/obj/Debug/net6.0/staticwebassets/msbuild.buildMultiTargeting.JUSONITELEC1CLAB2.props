@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\JUSONITELEC1CLAB2.props" />
+</Project>

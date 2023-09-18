@@ -1,0 +1,30 @@
+﻿<style>
+    p {
+        font-family: verdana, sans-serif;
+        font-weight: bold;
+    }
+</style>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    var currentTime = DateTime.Now;
+    var timeOfDay = "Morning!";
+
+    if (currentTime.Hour >= 12 && currentTime.Hour < 18)
+    {
+        timeOfDay = "Afternoon!";
+    }
+    else if (currentTime.Hour >= 18)
+    {
+        timeOfDay = "Evening!";
+    }
+}
+
+<div class="text-center">
+    <h1 class="display-4">What is the Time of the Day?</h1> <br>
+    <p>@DateTime.Now</p>
+    <p>Good @timeOfDay</p>
+</div>

@@ -1,0 +1,44 @@
+﻿<style>
+    table.table {
+        border: 1px solid black;
+    }
+
+        table.table th {
+            font-size: 20px;
+            font-family: verdana, sans-serif;
+            border: 1px solid black;
+        }
+
+        table.table td {
+            font-family: verdana, sans-serif;
+            border: 1px solid black;
+        }
+</style>
+
+<table class="table">
+    <div class="text-center">
+        <h1 class="display-4">Instructor</h1>
+    </div>
+    <tr>
+        <td>ID</td>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Course</td>
+        <td>Enrollment Date</td>
+    </tr>
+    @foreach (var instructor in Model)
+    {
+        <tr>
+            <td>@instructor.Id</td>
+            <td>@instructor.FirstName</td>
+            <td>@instructor.LastName</td>
+            <td>@instructor.Course</td>
+            <td>@instructor.EnrollmentDate.ToString("yyyy-MM-dd")</td>
+            <td>
+                <a asp-action="ShowDetail" asp-route-id="@instructor.Id">Show Details</a> |
+                <a asp-action="EditStudent" asp-route-id="@instructor.Id">Edit Instructor</a>
+            </td>
+        </tr>
+    }
+</table>
+<a href="@Url.Action("AddStudent", "Instructor2")" class="btn btn-primary">Add Instructor</a>

@@ -1,0 +1,43 @@
+﻿<style>
+    table.table {
+        border: 1px solid black;
+    }
+
+        table.table th {
+            font-size: 20px;
+            font-family: verdana, sans-serif;
+            border: 1px solid black;
+        }
+
+        table.table td {
+            font-family: verdana, sans-serif;
+            border: 1px solid black;
+        }
+</style>
+
+@model Instructor2;
+
+<h1>Instructor Details</h1>
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <td>@Model.Id</td>
+    </tr>
+    <tr>
+        <th>First Name</th>
+        <td>@Model.FirstName</td>
+    </tr>
+    <tr>
+        <th>Last Name</th>
+        <td>@Model.LastName</td>
+    </tr>
+    <tr>
+        <th>Course</th>+
+        <td>@Model.Course</td>
+    </tr>
+    <tr>
+        <th>Enrollment Date</th>
+        <td>@Model.EnrollmentDate</td>
+    </tr>
+</table>
