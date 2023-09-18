@@ -21,7 +21,7 @@ namespace JUSONITELEC1CLAB2.Controllers
                 Id = 2,
                 FirstName = "Cassandra",
                 LastName = "Lugtu",
-                Rank = Rank.AssistantProfessor,
+                Rank = Rank.Instructor,
                 IsTenured = IsTenured.Permanent,
                 HiringDate = DateOnly.Parse("05/02/2021")
             },
@@ -33,8 +33,17 @@ namespace JUSONITELEC1CLAB2.Controllers
                 Rank = Rank.AssistantProfessor,
                 IsTenured = IsTenured.Permanent,
                 HiringDate = DateOnly.Parse("06/03/2022")
-            
-            
+            },
+             new Instructor()
+            {
+                Id = 4,
+                FirstName = "Colbie",
+                LastName = "Lugut",
+                Rank = Rank.AssociateProfessor,
+                IsTenured = IsTenured.Permanent,
+                HiringDate = DateOnly.Parse("07/04/2023")
+
+
             },
         };
         public IActionResult Index()

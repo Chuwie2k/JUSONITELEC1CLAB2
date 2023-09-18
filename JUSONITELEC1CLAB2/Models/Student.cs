@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace JUSONITELEC1CLAB2.Models;
+namespace JUSONITELEC1CLAB2.Models
 {
     public enum Course
     {
-        ComputerScience ,InformationTechnology ,InformationSystems
+        ComputerScience, InformationTechnology, InformationSystems
     }
 
     public class Student
@@ -18,7 +18,5 @@ namespace JUSONITELEC1CLAB2.Models;
         public Course Course { get; set; }
 
         public DateOnly EnrollmentDate { get; set; }
-
     }
 }
-

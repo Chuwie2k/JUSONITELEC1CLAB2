@@ -13,7 +13,7 @@ namespace JUSONITELEC1CLAB2.Controllers
                 FirstName = "Vince Albert",
                 LastName = "Juson",
                 Course = Course.ComputerScience,
-                EnrollmentDate = DateOnly.Parse("2022-09-01")
+                EnrollmentDate = DateOnly.Parse("2021-09-01")
             },
             new Student()
             {
@@ -21,7 +21,7 @@ namespace JUSONITELEC1CLAB2.Controllers
                 FirstName = "Cassandra",
                 LastName = "Lugtu",
                 Course = Course.InformationTechnology,
-                EnrollmentDate = DateOnly.Parse("2022-08-15")
+                EnrollmentDate = DateOnly.Parse("2022-10-02")
             },
             new Student()
             {
@@ -29,8 +29,17 @@ namespace JUSONITELEC1CLAB2.Controllers
                 FirstName = "Joaquin",
                 LastName = "Valdez",
                 Course = Course.InformationSystems,
-                EnrollmentDate = DateOnly.Parse("2022-09-10")
+                EnrollmentDate = DateOnly.Parse("2023-11-03")
             },
+            new Student()
+            {
+                Id = 4,
+                FirstName = "Colbie",
+                LastName = "Lugtu",
+                Course = Course.InformationTechnology,
+                EnrollmentDate = DateOnly.Parse("2024-12-04")
+            },
+
         };
         public IActionResult Index()
         {

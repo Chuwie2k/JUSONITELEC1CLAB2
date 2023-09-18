@@ -16,8 +16,9 @@
 </style>
 
 <table class="table">
+
     <div class="text-center">
-        <h1 class="display-4">Instructor</h1>
+        <h1 class="display-4">Student</h1>
     </div>
     <tr>
         <td>ID</td>
@@ -25,20 +26,24 @@
         <td>Last Name</td>
         <td>Course</td>
         <td>Enrollment Date</td>
+        <td>Details</td>
+        <td>Edit</td>
     </tr>
-    @foreach (var instructor in Model)
+    @foreach (var student in Model)
     {
         <tr>
-            <td>@instructor.Id</td>
-            <td>@instructor.FirstName</td>
-            <td>@instructor.LastName</td>
-            <td>@instructor.Course</td>
-            <td>@instructor.EnrollmentDate.ToString("yyyy-MM-dd")</td>
+            <td>@student.Id</td>
+            <td>@student.FirstName</td>
+            <td>@student.LastName</td>
+            <td>@student.Course</td>
+            <td>@student.EnrollmentDate.ToString("yyyy-MM-dd")</td>
             <td>
-                <a asp-action="ShowDetail" asp-route-id="@instructor.Id">Show Details</a> |
-                <a asp-action="EditStudent" asp-route-id="@instructor.Id">Edit Instructor</a>
+                <a asp-action="ShowDetail" asp-route-id="@student.Id">Show Details</a>
+            </td>
+            <td>
+                <a asp-action="EditStudent" asp-route-id="@student.Id">Edit Student</a>
             </td>
         </tr>
     }
 </table>
-<a href="@Url.Action("AddStudent", "Instructor2")" class="btn btn-primary">Add Instructor</a>
+<a href="@Url.Action("AddStudent", "Student")" class="btn btn-primary">Add Student</a>

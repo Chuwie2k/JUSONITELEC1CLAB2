@@ -1,6 +1,8 @@
-﻿@model JUSONITELEC1CLAB2.Models.Instructor2
+﻿@model JUSONITELEC1CLAB2.Models.Student
 
-<h2>Edit Instructor</h2>
+<div class="text-center">
+    <h1 class="display-4">Edit Student</h1>
+</div>
 
 <form asp-action="EditStudent" method="post">
     <input type="hidden" asp-for="Id" />
@@ -30,5 +32,5 @@
         <input type="date" asp-for="EnrollmentDate" class="form-control" />
     </div>
 
-    <button type="submit" class="btn btn-primary">Update Instructor</button>
+    <button type="submit" class="btn btn-primary">Update Student</button>
 </form>

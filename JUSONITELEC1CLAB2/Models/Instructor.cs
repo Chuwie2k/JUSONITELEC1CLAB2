@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace JUSONITELEC1CLAB2.Models;
+namespace JUSONITELEC1CLAB2.Models
 {
     public enum Rank
     {
@@ -11,6 +11,7 @@ namespace JUSONITELEC1CLAB2.Models;
     {
         Permanent, Probationary
     }
+
     public class Instructor
     {
         public int Id { get; set; }
@@ -26,7 +27,5 @@ namespace JUSONITELEC1CLAB2.Models;
         public DateOnly HiringDate { get; set; }
 
         public string Email { get; set; }
-
     }
 }
-
