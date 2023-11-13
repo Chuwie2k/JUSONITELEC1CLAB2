@@ -10,36 +10,24 @@ namespace JUSONITELEC1CLAB2.Controllers
             new Student()
             {
                 Id = 1,
-                FirstName = "Vince Albert",
-                LastName = "Juson",
-                Course = Course.ComputerScience,
-                EnrollmentDate = DateOnly.Parse("2021-09-01")
+                Name = "Vince Albert",
+                Course = Course.BSIT,
+                DateEnrolled = DateTime.Parse("2021-09-01")
             },
             new Student()
             {
                 Id = 2,
-                FirstName = "Cassandra",
-                LastName = "Lugtu",
-                Course = Course.InformationTechnology,
-                EnrollmentDate = DateOnly.Parse("2022-10-02")
+                Name = "Vince Albert",
+                Course = Course.BSIT,
+                DateEnrolled = DateTime.Parse("2021-09-01")
             },
             new Student()
             {
                 Id = 3,
-                FirstName = "Joaquin",
-                LastName = "Valdez",
-                Course = Course.InformationSystems,
-                EnrollmentDate = DateOnly.Parse("2023-11-03")
+                Name = "Vince Albert",
+                Course = Course.BSCS,
+                DateEnrolled = DateTime.Parse("2021-09-01")
             },
-            new Student()
-            {
-                Id = 4,
-                FirstName = "Colbie",
-                LastName = "Lugtu",
-                Course = Course.InformationTechnology,
-                EnrollmentDate = DateOnly.Parse("2024-12-04")
-            },
-
         };
         public IActionResult Index()
         {
@@ -88,10 +76,9 @@ namespace JUSONITELEC1CLAB2.Controllers
             Student existingStudent = StudentList.FirstOrDefault(st => st.Id == updatedStudent.Id);
             if (existingStudent != null)
             {
-                existingStudent.FirstName = updatedStudent.FirstName;
-                existingStudent.LastName = updatedStudent.LastName;
+                existingStudent.Name = updatedStudent.Name;
                 existingStudent.Course = updatedStudent.Course;
-                existingStudent.EnrollmentDate = updatedStudent.EnrollmentDate;
+                existingStudent.DateEnrolled = updatedStudent.DateEnrolled;
 
                 return RedirectToAction("Index");
             }

@@ -1,28 +1,8 @@
-﻿<style>
-    table.table {
-        border: 1px solid black;
-    }
+﻿@model Instructor;
 
-        table.table th {
-            font-size: 20px;
-            font-family: verdana, sans-serif;
-            border: 1px solid black;
-        }
+<h1>Instructor Details</h1>
 
-        table.table td {
-            font-family: verdana, sans-serif;
-            border: 1px solid black;
-        }
-</style>
-
-@model Instructor;
-
-<div class="text-center">
-    <h1 class="display-4">Instructor Details</h1>
-</div>
-
-
-<table class="table">
+<table class="table table-striped table-dark">
     <tr>
         <th>Id</th>
         <td>@Model.Id</td>

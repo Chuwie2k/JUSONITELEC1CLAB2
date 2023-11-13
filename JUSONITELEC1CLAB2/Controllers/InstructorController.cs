@@ -1,108 +1,113 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using JUSONITELEC1CLAB2.Models;
+using JUSONITELEC1CLAB2.Data;
 
 namespace JUSONITELEC1CLAB2.Controllers
 {
     public class InstructorController : Controller
     {
-        List<Instructor> InstructorList = new List<Instructor>
+        private readonly AppDbContext _dbContext;
+
+        public InstructorController(AppDbContext dbContext)
         {
-            new Instructor()
-            {
-                Id = 1,
-                FirstName = "Vince Albert",
-                LastName = "Juson",
-                Rank = Rank.Professor,
-                IsTenured = IsTenured.Permanent,
-                HiringDate = DateOnly.Parse("04/01/2020")
-            },
-            new Instructor()
-            {
-                Id = 2,
-                FirstName = "Cassandra",
-                LastName = "Lugtu",
-                Rank = Rank.Instructor,
-                IsTenured = IsTenured.Permanent,
-                HiringDate = DateOnly.Parse("05/02/2021")
-            },
-            new Instructor()
-            {
-                Id = 3,
-                FirstName = "Joaquin",
-                LastName = "Valdez",
-                Rank = Rank.AssistantProfessor,
-                IsTenured = IsTenured.Permanent,
-                HiringDate = DateOnly.Parse("06/03/2022")
-            },
-             new Instructor()
-            {
-                Id = 4,
-                FirstName = "Colbie",
-                LastName = "Lugut",
-                Rank = Rank.AssociateProfessor,
-                IsTenured = IsTenured.Permanent,
-                HiringDate = DateOnly.Parse("07/04/2023")
+            _dbContext = dbContext;
+        }
 
-
-            },
-        };
         public IActionResult Index()
         {
-            return View(InstructorList);
+            return View(_dbContext.Instructors);
         }
 
         public IActionResult ShowDetail(int id)
         {
-            Instructor? Instructor = InstructorList.FirstOrDefault(st => st.Id == id);
-            if (Instructor != null)
-            {
-                return View(Instructor);
-            }
-
-            return View();
-        }
-        [HttpGet]
-        public IActionResult AddInstructor()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult AddInstructor(Instructor newInstructor)
-        {
-            InstructorList.Add(newInstructor);
-            return View("Index", InstructorList);
-        }
-        [HttpGet]
-        public IActionResult EditInstructor(int id)
-        {
-            Instructor instructor = InstructorList.FirstOrDefault(st => st.Id == id);
+            Instructor instructor = _dbContext.Instructors.FirstOrDefault(st => st.Id == id);
             if (instructor != null)
             {
                 return View(instructor);
             }
 
-            return NotFound(); 
+            return NotFound();
         }
+
+        [HttpGet]
+        public IActionResult AddInstructor()
+        {
+            return View();
+        }
+
         [HttpPost]
-       
+        public IActionResult AddInstructor(Instructor newInstructor)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(newInstructor);
+            }
+
+            _dbContext.Instructors.Add(newInstructor);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            Instructor instructor = _dbContext.Instructors.FirstOrDefault(st => st.Id == id);
+            if (instructor != null)
+            {
+                return View("EditInstructor", instructor);
+            }
+
+            return NotFound();
+        }
+
+        [HttpPost]
         public IActionResult EditInstructor(Instructor updatedInstructor)
         {
-            Instructor existingInstructor = InstructorList.FirstOrDefault(st => st.Id == updatedInstructor.Id);
+            if (!ModelState.IsValid)
+            {
+                return View("EditInstructor", updatedInstructor);
+            }
 
+            Instructor existingInstructor = _dbContext.Instructors.FirstOrDefault(st => st.Id == updatedInstructor.Id);
+
+            if (existingInstructor != null)
+            {
                 existingInstructor.FirstName = updatedInstructor.FirstName;
                 existingInstructor.LastName = updatedInstructor.LastName;
                 existingInstructor.IsTenured = updatedInstructor.IsTenured;
                 existingInstructor.Rank = updatedInstructor.Rank;
                 existingInstructor.HiringDate = updatedInstructor.HiringDate;
+                _dbContext.SaveChanges();
 
-                return View("Index", InstructorList);
+                return RedirectToAction("Index");
             }
 
-           
+            return NotFound();
         }
 
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            Instructor instructor = _dbContext.Instructors.FirstOrDefault(st => st.Id == id);
+            if (instructor != null)
+            {
+                return View("Delete", instructor);            }
+
+            return NotFound();
+        }
+
+        [HttpPost]
+        public IActionResult DeleteInstructor(int id)
+        {
+            Instructor instructor = _dbContext.Instructors.FirstOrDefault(st => st.Id == id);
+            if (instructor != null)
+            {
+                _dbContext.Instructors.Remove(instructor);
+                _dbContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return NotFound();
+        }
     }
-
-
-    
-
+}
